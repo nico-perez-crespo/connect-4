@@ -125,13 +125,7 @@ function win(){
     desc.style.display = "block"
     desc.innerHTML = `${winnerName} won the game`
     desc.style.color = turn
-
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < columns; j++) {
-            document.getElementById(`${i}_${j}`).style.pointerEvents = "none"
-        }
-    }
-
+    document.getElementById("board").style.pointerEvents = "none"
     document.getElementById("start").value = "PLAY AGAIN"
 
 }
