@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Connect 4 Game</h1>
+    <main>
+        <div>
+            <form  id="form" action="">
+                <div class="test3">
+                    <label style="color: red;" for="pl1">Player 🔴</label>
+                    <input placeholder="Enter your name..." type="text" name="" id="pl1">
+                    <p class="error" id="error_name_x">Name must containt text</p>
+                </div>
+                <div class="test3">
+                    <label style="color: orange;" for="pl2">Player 🟡</label>
+                    <input placeholder="Enter your name..." type="text" name="" id="pl2">
+                    <p class="error" id="error_name_o">Name must containt text</p>
+                </div>
+                <div class="test">
+                    <div class="test3">
+                        <label style="color: blue;" for="cols">Nº columns:</label>
+                        <input class="test2" placeholder="8" type="number" name="" id="cols">
+                        <p class="error" id="error_n_cols">Incorrect value</p>
+                    </div>
+                    <div class="test3">
+                        <label style="color: blue;" for="rows">Nº rows:</label>
+                        <input class="test2" placeholder="8" type="number" name="" id="rows">
+                        <p class="error"  id="error_n_rows">Incorrect value</p>
+                    </div>            
+                </div>
+                <input id="start" onclick="startGame()" type="button" value="START GAME">      
+            </form>
+        </div>
+        <div>
+            <div id="board"></div>
+            <p id="desc"></p>
+        </div>
+    </main>
+    <script src="../js/scrpit.js"></script>
+</body>
+</html>
