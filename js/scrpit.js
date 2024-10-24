@@ -1,10 +1,10 @@
-// constant variables
+// Constant variables
 const minRows = 5
 const minCols = 5
-const maxRows = 7
-const maxCols = 13
+const maxRows = 20
+const maxCols = 20
 
-// global variables
+// Global variables
 var turn = ""
 var player1 = ""
 var player2 = ""
@@ -15,7 +15,6 @@ var rows
  *  First function when game starts.
  */
 function startGame(){
-
     if(checkFields()){
         turn = "red"
         document.getElementById("start").value = "RESTART GAME"
@@ -49,17 +48,16 @@ function checkFields(){
     let txtErrorNCols = document.getElementById("error_n_cols").style
     let txtErrorNRows = document.getElementById("error_n_rows").style
 
-    txtErrorNameX.visibility = player1 == "" ? "visible" : "hidden" 
-    txtErrorNameO.visibility = player2  == "" ? "visible" : "hidden" 
+    txtErrorNameX.visibility = player1 == "" || player1 == player2  ? "visible" : "hidden" 
+    txtErrorNameO.visibility = player2 == "" || player1 == player2  ? "visible" : "hidden" 
 
     let correctCols = columns  != "" && !isNaN(parseInt(columns))  && columns >= minCols && columns <= maxCols
     let correctRows = rows     != "" && !isNaN(parseInt(rows)) && rows >= minRows && rows <= maxRows 
     
-
     txtErrorNCols.visibility =  !correctCols ? "visible" : "hidden" 
     txtErrorNRows.visibility =  !correctRows ? "visible" : "hidden" 
 
-    return player1 != "" && player2 != "" && correctRows && correctCols
+    return player1 != "" && player2 != "" && player1 != player2 && correctRows && correctCols
 }
 
 /**
@@ -102,13 +100,11 @@ function hoverColumn(col){
  */
 function resetColumn(col){
     let row = getRow(col)
-
     if(!isNaN(row)){
         let tile = document.getElementById(`${row},${col}`)
         tile.style.backgroundColor = `white`
         tile.style.opacity = "100%"
     }
-
     for (let i = 0; i < rows; i++) {
         let cell = document.getElementById(`${i},${col}`)
         if(cell.classList.contains("white")){
@@ -122,7 +118,6 @@ function resetColumn(col){
  */
 function putTile(row, col){
     row = getRow(col)
-
     if(!isNaN(row)){
         let tile = document.getElementById(`${row},${col}`)
         tile.classList.remove("white")
@@ -163,7 +158,6 @@ function win(){
  * Set the pointer events of the game and show the finalPhrase with a color.
  */
 function stopGame(finalPhrase,color){
-
     let desc = document.getElementById("desc")
     desc.style.display = "block"
     desc.innerHTML = finalPhrase
@@ -203,7 +197,6 @@ function checkWinner(col, row){
         i++
         j++
     }
-
 
     count = 0
     i = initCol
@@ -253,6 +246,4 @@ function getRow(col){
             return i
         }
     }
-
 }
-
